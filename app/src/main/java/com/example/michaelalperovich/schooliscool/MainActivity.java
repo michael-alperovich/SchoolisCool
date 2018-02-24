@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         timeTextView = findViewById(R.id.timeTextView);
         leftButton = findViewById(R.id.leftButton);
         rightButton = findViewById(R.id.rightButton);
+
         initialize();
 
     }
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void printStats() {
-        String tmp = new String();
+        String tmp = "";
         tmp += "Stress: " + stress;
         tmp += " Energy: " + energy;
         tmp += " Friends: " + friends;
@@ -149,16 +151,16 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             printStats();
-            if(grades < 0){
+            if(grades <= 0){
             	promptTextView.setText("You're grades are suffering so heavily, you're parents have decided to homeschool you...");
             }
-            else if(friends < 0){
+            else if(friends <= 0){
             	promptTextView.setText("Being a good friend is important. You didn't do that. You have 0 friends, even on facebook...");
             }
-            else if(energy <  0){
+            else if(energy <=  0){
             	promptTextView.setText("You find yourself to tired, to wake up, or move, or go out, or breathe...");
             }
-            else if(stress > 100){
+            else if(stress >= 100){
             	promptTextView.setText("Wow this is a lot to handle, you are so stressed out you cannot bring yourself to go to school, do your homework, or see your friends...");
             }
             return;
