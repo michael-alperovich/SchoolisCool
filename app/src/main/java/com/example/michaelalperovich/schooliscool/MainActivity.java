@@ -137,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
             main();
         }
         else {
+            printStats();
             promptTextView.setText("You Failed!");
         }
     }
