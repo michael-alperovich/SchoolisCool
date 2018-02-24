@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     TextView promptTextView;
     TextView statsTextView;
+    TextView timeTextView;
     Button leftButton;
     Button rightButton;
     private int promptNum = 0;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private int minute = 0;
     private int choice;
     private boolean initialised = false;
+    private int day = 0;
 
 
     @Override
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         promptTextView = findViewById(R.id.promptTextView);
         statsTextView = findViewById(R.id.statsTextView);
+        timeTextView = findViewById(R.id.timeTextView);
         leftButton = findViewById(R.id.leftButton);
         rightButton = findViewById(R.id.rightButton);
         initialise();
@@ -62,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         promptTextView.setText(prompts.get(promptNum).toString());
         leftButton.setText(prompts.get(promptNum).getOption(0));
         rightButton.setText(prompts.get(promptNum).getOption(1));
+        timeTextView.setText("Time: " + hour + ": " + (minute / 10) + (minute % 10) + "; Day: " + getDayString(day));
     }
 
     private void initializePrompts() {
@@ -108,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
         hour = 6;
         minute = 0;
         initialised = false;
+        day = 0;
         initializePrompts();
         printStats();
         main();
@@ -152,6 +157,42 @@ public class MainActivity extends AppCompatActivity {
 
     public void onRetryClick(View view) {
         initialise();
+    }
+
+    public boolean isWeekday(){
+
+        if(day >= 5){ //0 == monday
+
+            return false;
+
+        }
+
+        return true;
+    }
+
+    public String getDayString(int day){
+
+        switch(day){
+
+            case 0:
+                return "Monday";
+            case 1:
+                return "Tuesday";
+            case 2:
+                return "Wednesday";
+            case 3:
+                return "Thursday";
+            case 4:
+                return "Friday";
+            case 5:
+                return "Saturday";
+            case 6:
+                return "Sunday";
+            default:
+                return "Invalid Day";
+        }
+
+
     }
 }
 
