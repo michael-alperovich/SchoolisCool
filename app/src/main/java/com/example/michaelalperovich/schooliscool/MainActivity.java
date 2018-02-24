@@ -60,8 +60,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void displayPrompt() {
-        if(promptNum >= prompts.size()){
-            promptNum = 0;
+        promptNum = rgen.nextInt(prompts.size());
+        Prompt currentPrompt = prompts.get(promptNum);
+
+        int[] possibleDays = currentPrompt.getPossibleDays();
+        int[] possibleTimes = currentPrompt.getPossibleTimes();
+
+        if(!(possibleDays[0] <= day && possibleDays[1] >= day && possibleTimes[0] <= hour && possibleTimes[1] >= hour)){
+            displayPrompt();
+            return;
         }
         promptTextView.setText(prompts.get(promptNum).toString());
         leftButton.setText(prompts.get(promptNum).getOption(0));
@@ -86,16 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void choice(int option){
 
-    	promptNum = rgen.nextInt(prompts.size());
-    	Prompt currentPrompt = prompts.get(promptNum);
-    	
-    	int[] possibleDays = currentPrompt.getPossibleDays();
-    	int[] possibleTimes = currentPrompt.getPossibleTimes();
-    	
-    	if(!(possibleDays[0] <= day && possibleDays[1] >= day && possibleTimes[0] <= hour && possibleTimes[1] >= hour)){
-    		choice(option);
-    		return;
-    	}
+        Prompt currentPrompt = prompts.get(promptNum);
     	
         stress = Math.max(stress + currentPrompt.getStressChange()[option], 0);
         energy = Math.min(energy + currentPrompt.getEnergyChange()[option], 100);
@@ -142,7 +140,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void main2() {
         choice(choice);
-        promptNum++;
         if (grades > 0 && friends > 0 && energy > 0 && stress < 100) {
 
             //System.out.println("time passes");
