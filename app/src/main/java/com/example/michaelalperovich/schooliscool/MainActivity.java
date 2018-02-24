@@ -65,6 +65,10 @@ public class MainActivity extends AppCompatActivity {
         promptTextView.setText(prompts.get(promptNum).toString());
         leftButton.setText(prompts.get(promptNum).getOption(0));
         rightButton.setText(prompts.get(promptNum).getOption(1));
+        if (hour == 24) {
+            hour = 0;
+            day = (day + 1) % 7;
+        }
         timeTextView.setText("Time: " + hour + ": " + (minute / 10) + (minute % 10) + "; Day: " + getDayString(day));
     }
 
