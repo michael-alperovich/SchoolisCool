@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
             else if(friends < 0){
             	promptTextView.setText("Being a good friend is important. You didn't do that. You have 0 friends, even on facebook...");
             }
-            else if(energy >  0){
+            else if(energy <  0){
             	promptTextView.setText("You find yourself to tired, to wake up, or move, or go out, or breathe...");
             }
             else if(stress < 100){
