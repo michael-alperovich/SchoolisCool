@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     TextView promptTextView;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private int choice;
     private boolean initialised = false;
     private int day = 0;
-
+    private Random rgen = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +86,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void choice(int option){
 
-        Prompt currentPrompt = prompts.get(promptNum);
+    	promptNum = rgen.nextInt(prompts.size());
+    	Prompt currentPrompt = prompts.get(promptNum);
+    	
+    	int[] possibleDays = currentPrompt.getPossibleDays();
+    	int[] possibleTimes = currentPrompt.getPossibleTimes();
+    	
+    	if(!(possibleDays[0] <= day && possibleDays[1] >= day && possibleTimes[0] <= hour && possibleTimes[1] >= hour)){
+    		choice(option);
+    		return;
+    	}
+    	
         stress = Math.max(stress + currentPrompt.getStressChange()[option], 0);
         energy = Math.min(energy + currentPrompt.getEnergyChange()[option], 100);
         friends = Math.min(friends + currentPrompt.getFriendsChange()[option], 100);
@@ -209,6 +220,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    
 }
 
 

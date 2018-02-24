@@ -69,7 +69,15 @@ public class Prompt {
     public int[] getGradesChange(){
         return grades;
     }
+    
+    public int[] getPossibleTimes(){
+    	return possibleTimes;
+    }
 
+    public int[] getPossibleDays(){
+    	return possibleDays;
+    }
+    
     public String toString() {
         return this.prompt;
     }
