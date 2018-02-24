@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         statsTextView = findViewById(R.id.statsTextView);
         leftButton = findViewById(R.id.leftButton);
         rightButton = findViewById(R.id.rightButton);
-        main();
+        initialise();
 
     }
 
@@ -85,31 +85,50 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void getButtonPressed(String i){
+    public void getButtonPressed(int option){
         initialised = false;
-        if (i.equals("left")) {
-            choice = 0;
-        }
-        else if (i.equals("right")) {
-            choice = 1;
+        if (option != -1) {
+            promptNum++;
+            //System.out.println("time passes");
+            printStats();
         }
         else {
-            choice = -1;
+            System.out.println("You failed");
+            return;
         }
+
+        Prompt currentPrompt = prompts.get(promptNum);
+        stress += currentPrompt.getStressChange()[option];
+        energy += currentPrompt.getEnergyChange()[option];
+        friends += currentPrompt.getFriendsChange()[option];
+        grades += currentPrompt.getGradesChange()[option];
         main2();
     }
 
-    public void main() {
-
+    public void initialise() {
+        promptNum = 0;
+        ArrayList<Prompt> prompts = new ArrayList<>();
+        stress = 50;
+        energy = 50;
+        friends = 50;
+        grades = 50;
+        hour = 6;
+        minute = 0;
+        initialised = false;
         initializePrompts();
-        initialised = true;
         printStats();
+        main();
+    }
+
+    public void main() {
+        initialised = true;
+
         //System.out.println("Time: " + hour + ": " + (minute / 10) + (minute % 10));
         displayPrompt();
     }
 
     private void main2() {
-        if (choice != -1) {
+        if (grades > 0 && friends > 0 && energy > 0 && stress < 100) {
             choice(choice);
             promptNum++;
             //System.out.println("time passes");
@@ -118,25 +137,26 @@ public class MainActivity extends AppCompatActivity {
             main();
         }
         else {
-            statsTextView.setText("You Failed!");
+            promptTextView.setText("You Failed!");
         }
-    }
-
-    public Prompt nextPrompt() {
-        //TODO
-        return null;
     }
 
 
     public void onYesClick(View View) {
         if (initialised){
-            getButtonPressed("left");
+            getButtonPressed(0);
         }
     }
 
     public void onNoClick(View View) {
         if (initialised) {
-            getButtonPressed("right");
+            getButtonPressed(1);
         }
     }
+
+    public void onRetryClick(View view) {
+        initialise();
+    }
 }
+
+

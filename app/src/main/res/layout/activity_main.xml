@@ -45,9 +45,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="OnNoClick"
+                android:onClick="onNoClick"
                 android:text="No" />
         </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRetryClick"
+            android:text="Retry" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
