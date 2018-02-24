@@ -62,5 +62,12 @@
             android:text="TextView"
             android:textAppearance="@android:style/TextAppearance.Medium" />
 
+        <TextView
+            android:id="@+id/scoreTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textAppearance="@android:style/TextAppearance.Medium" />
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     TextView promptTextView;
     TextView statsTextView;
     TextView timeTextView;
+    TextView scoreTextView;
     Button leftButton;
     Button rightButton;
     private int promptNum = 0;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean initialised = false;
     private int day = 0;
     private Random rgen = new Random();
+    private int score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         promptTextView = findViewById(R.id.promptTextView);
         statsTextView = findViewById(R.id.statsTextView);
         timeTextView = findViewById(R.id.timeTextView);
+        scoreTextView = findViewById(R.id.scoreTextView);
         leftButton = findViewById(R.id.leftButton);
         rightButton = findViewById(R.id.rightButton);
 
@@ -79,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
             day = (day + 1) % 7;
         }
         timeTextView.setText("Time: " + hour + ": " + (minute / 10) + (minute % 10) + "; Day: " + getDayString(day));
+        scoreTextView.setText("Score: " + score);
     }
 
     private void initializePrompts() {
@@ -154,12 +158,13 @@ public class MainActivity extends AppCompatActivity {
             //System.out.println("time passes");
             printStats();
             timeIncrease();
+            score++;
             main();
         }
         else {
             printStats();
             if(grades <= 0){
-            	promptTextView.setText("You're grades are suffering so heavily, you're parents have decided to homeschool you...");
+            	promptTextView.setText("You're grades are suffering so heavily, you're parents have decided to homeschool you...\nYour score is: ");
             }
             else if(friends <= 0){
             	promptTextView.setText("Being a good friend is important. You didn't do that. You have 0 friends, even on facebook...");
