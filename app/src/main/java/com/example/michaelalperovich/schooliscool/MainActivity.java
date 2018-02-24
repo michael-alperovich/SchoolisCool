@@ -47,7 +47,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void timeIncrease() {
-        hour++;
+        minute += 60;
+        if (minute >= 60) {
+            hour += minute / 60;
+            minute -= 60;
+        }
     }
 
     private void printStats() {
@@ -135,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
         minute = 0;
         initialised = false;
         day = 0;
+        score = 0;
         initializePrompts();
         printStats();
         main();
