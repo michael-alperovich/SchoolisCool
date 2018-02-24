@@ -78,10 +78,10 @@ public class MainActivity extends AppCompatActivity {
     public void choice(int option){
 
         Prompt currentPrompt = prompts.get(promptNum);
-        stress += Math.max(currentPrompt.getStressChange()[option], 0);
-        energy += Math.min(currentPrompt.getEnergyChange()[option], 100);
-        friends += Math.min(currentPrompt.getFriendsChange()[option], 100);
-        grades += Math.min(currentPrompt.getGradesChange()[option], 100);
+        stress = Math.max(stress + currentPrompt.getStressChange()[option], 0);
+        energy = Math.min(energy + currentPrompt.getEnergyChange()[option], 100);
+        friends = Math.min(friends + currentPrompt.getFriendsChange()[option], 100);
+        grades = Math.min(grades + currentPrompt.getGradesChange()[option], 100);
 
     }
 
