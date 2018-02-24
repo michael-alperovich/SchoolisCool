@@ -172,7 +172,6 @@ public class MainActivity extends AppCompatActivity {
             else if(stress >= 100){
             	promptTextView.setText("Wow this is a lot to handle, you are so stressed out you cannot bring yourself to go to school, do your homework, or see your friends...");
             }
-            return;
         }
     }
 
@@ -195,13 +194,7 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean isWeekday(){
 
-        if(day >= 5){ //0 == monday
-
-            return false;
-
-        }
-
-        return true;
+        return day >= 4;
     }
 
     public String getDayString(int day){
