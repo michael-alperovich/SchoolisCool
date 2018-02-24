@@ -72,36 +72,29 @@ public class MainActivity extends AppCompatActivity {
         prompts.add(new Prompt("Your neighbors are going out for the weekend. They ask you if you could babysit their son. Do you?", "YES", "NO", 5, 0, -5, 0, -5, 5, 0, 5));
         prompts.add(new Prompt("There's a lecture in a university in your area that is open to the public. Do you go?", "YES", "NO", 0, 0, -5, 0, -5, 5, 15, -5));
         prompts.add(new Prompt("There's a scholarship available for college. Do you try to get it?", "YES", "NO", 15, -5, -15, 5, -5, 5, -5, 5));
-        prompts.add(new Prompt("There's a job opening in your area and you fit the criteria that would be needed to fill it. Do you apply for the job?", "YES", "NO", 15, -5, -10, 10, -10, 10, -5, 15));
+        prompts.add(new Prompt("There's a job opening in your area and you fit the criteria that would be needed to fill it. Do you apply for the job?", "YES", "NO", 15, -5, -10, 10, -10, 10, 15, -5));
     }
 
     public void choice(int option){
 
         Prompt currentPrompt = prompts.get(promptNum);
-        stress += currentPrompt.getStressChange()[option];
-        energy += currentPrompt.getEnergyChange()[option];
-        friends += currentPrompt.getFriendsChange()[option];
-        grades += currentPrompt.getGradesChange()[option];
+        stress += Math.max(currentPrompt.getStressChange()[option], 0);
+        energy += Math.min(currentPrompt.getEnergyChange()[option], 100);
+        friends += Math.min(currentPrompt.getFriendsChange()[option], 100);
+        grades += Math.min(currentPrompt.getGradesChange()[option], 100);
 
     }
 
     public void getButtonPressed(int option){
+        choice = option;
         initialised = false;
         if (option != -1) {
-            promptNum++;
             //System.out.println("time passes");
             printStats();
         }
         else {
             System.out.println("You failed");
-            return;
         }
-
-        Prompt currentPrompt = prompts.get(promptNum);
-        stress += currentPrompt.getStressChange()[option];
-        energy += currentPrompt.getEnergyChange()[option];
-        friends += currentPrompt.getFriendsChange()[option];
-        grades += currentPrompt.getGradesChange()[option];
         main2();
     }
 
@@ -128,9 +121,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void main2() {
+        choice(choice);
+        promptNum++;
         if (grades > 0 && friends > 0 && energy > 0 && stress < 100) {
-            choice(choice);
-            promptNum++;
+
             //System.out.println("time passes");
             printStats();
             timeIncrease();
@@ -139,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
         else {
             printStats();
             promptTextView.setText("You Failed!");
+            return;
         }
     }
 
