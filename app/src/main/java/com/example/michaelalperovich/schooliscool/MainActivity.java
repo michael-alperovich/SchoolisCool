@@ -227,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
         else {
             printStats();
             if(grades <= 0){
-            	promptTextView.setText("You're grades are suffering so heavily, you're parents have decided to homeschool you...");
+            	promptTextView.setText("You're grades are suffering so heavily, you're parents have decided to homeschool you... you lost. \nMake sure to study and work hard, it will pay off!");
             }
             else if(friends <= 0){
             	promptTextView.setText("Being a good friend is important. You didn't do that. You have 0 friends, even on facebook... You lost :(");
