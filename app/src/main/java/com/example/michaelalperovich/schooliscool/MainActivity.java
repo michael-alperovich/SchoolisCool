@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private int day = 0;
     private Random rgen = new Random();
     private int score;
-    private Prompt lastPrompt = prompts.get(0);
+    private Prompt lastPrompt;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +95,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void displayPrompt() {
+    	lastPrompt = prompt
+    	
         promptNum = rgen.nextInt(prompts.size());
         Prompt currentPrompt = prompts.get(promptNum);
 
@@ -183,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
         day = 0;
         score = 0;
         initializePrompts();
+        lastPrompt = prompts.get(0);
         printStats();
         main();
     }
