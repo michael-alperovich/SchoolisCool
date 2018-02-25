@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             else if (x <= 75) friendsImageView.setImageResource(R.drawable.friends3);
             else friendsImageView.setImageResource(R.drawable.friends4);
         }
-        /*
+
         if (view == stressImageView) {
             if (x == 0) stressImageView.setImageResource(R.drawable.stress0);
             else if (x <= 25) stressImageView.setImageResource(R.drawable.stress1);
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
             else if (x <= 75) stressImageView.setImageResource(R.drawable.stress3);
             else stressImageView.setImageResource(R.drawable.stress4);
         }
-
+        /*
         if (view == gradesImageView) {
             if (x == 0) gradesImageView.setImageResource(R.drawable.grades0);
             else if (x <= 25) gradesImageView.setImageResource(R.drawable.grades1);

@@ -30,7 +30,7 @@
                 android:layout_width="12dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/energy2" />
+                app:srcCompat="@drawable/stress0" />
 
             <ImageView
                 android:id="@+id/energyImageView"
