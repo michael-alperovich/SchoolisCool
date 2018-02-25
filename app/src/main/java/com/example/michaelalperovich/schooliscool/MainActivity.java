@@ -132,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
   	  prompts.add(new Prompt("Its a holiday and family are coming over, do you join?", "YES", "NO", -5, 10, -15, 10, -5, 5, 0, 5, 8, 24, 4, 6));
   	  prompts.add(new Prompt("Online friends invite you to a World of Warcraft raid, do you join?", "HELL YEAH", "NO", -5, 5, -10, 5, 15, -15, -20, 5, 8, 24, 4, 6));
   	  prompts.add(new Prompt("Your friends parents aren't home and they invite you to drink, do you go now?", "YES", "NO", -15, 5, 15, -5, 5, -15, -20, 15, 20, 24, 0, 6));
-    
     }
 
     public void choice(int option){
