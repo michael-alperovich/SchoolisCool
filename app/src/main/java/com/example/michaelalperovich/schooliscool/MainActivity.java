@@ -65,34 +65,34 @@ public class MainActivity extends AppCompatActivity {
 
     private void imagePicker(int x, ImageView view) {
         if (view == energyImageView) {
-            if (x == 0) energyImageView.setImageResource(R.drawable.energy0);
-            else if (x <= 25) energyImageView.setImageResource(R.drawable.energy1);
-            else if (x <= 50) energyImageView.setImageResource(R.drawable.energy2);
-            else if (x <= 75) energyImageView.setImageResource(R.drawable.energy3);
+            if (x < 13) energyImageView.setImageResource(R.drawable.energy0);
+            else if (x < 38) energyImageView.setImageResource(R.drawable.energy1);
+            else if (x < 63) energyImageView.setImageResource(R.drawable.energy2);
+            else if (x < 88) energyImageView.setImageResource(R.drawable.energy3);
             else energyImageView.setImageResource(R.drawable.energy4);
         }
 
         if (view == friendsImageView) {
-            if (x == 0) friendsImageView.setImageResource(R.drawable.friends0);
-            else if (x <= 25) friendsImageView.setImageResource(R.drawable.friends1);
-            else if (x <= 50) friendsImageView.setImageResource(R.drawable.friends2);
-            else if (x <= 75) friendsImageView.setImageResource(R.drawable.friends3);
+            if (x < 13) friendsImageView.setImageResource(R.drawable.friends0);
+            else if (x < 38) friendsImageView.setImageResource(R.drawable.friends1);
+            else if (x < 63) friendsImageView.setImageResource(R.drawable.friends2);
+            else if (x < 88) friendsImageView.setImageResource(R.drawable.friends3);
             else friendsImageView.setImageResource(R.drawable.friends4);
         }
 
         if (view == stressImageView) {
-            if (x == 0) stressImageView.setImageResource(R.drawable.stress0);
-            else if (x <= 25) stressImageView.setImageResource(R.drawable.stress1);
-            else if (x <= 50) stressImageView.setImageResource(R.drawable.stress2);
-            else if (x <= 75) stressImageView.setImageResource(R.drawable.stress3);
+            if (x < 13) stressImageView.setImageResource(R.drawable.stress0);
+            else if (x < 38) stressImageView.setImageResource(R.drawable.stress1);
+            else if (x < 63) stressImageView.setImageResource(R.drawable.stress2);
+            else if (x < 88) stressImageView.setImageResource(R.drawable.stress3);
             else stressImageView.setImageResource(R.drawable.stress4);
         }
         /*
         if (view == gradesImageView) {
-            if (x == 0) gradesImageView.setImageResource(R.drawable.grades0);
-            else if (x <= 25) gradesImageView.setImageResource(R.drawable.grades1);
-            else if (x <= 50) gradesImageView.setImageResource(R.drawable.grades2);
-            else if (x <= 75) gradesImageView.setImageResource(R.drawable.grades3);
+            if (x < 13) gradesImageView.setImageResource(R.drawable.grades0);
+            else if (x < 38) gradesImageView.setImageResource(R.drawable.grades1);
+            else if (x < 63) gradesImageView.setImageResource(R.drawable.grades2);
+            else if (x < 88) gradesImageView.setImageResource(R.drawable.grades3);
             else gradesImageView.setImageResource(R.drawable.grades4);
         }*/
     }
