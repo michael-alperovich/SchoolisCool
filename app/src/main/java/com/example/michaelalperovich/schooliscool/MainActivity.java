@@ -95,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void displayPrompt() {
-    	lastPrompt = prompt
     	
         promptNum = rgen.nextInt(prompts.size());
         Prompt currentPrompt = prompts.get(promptNum);
