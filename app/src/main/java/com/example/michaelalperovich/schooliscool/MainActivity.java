@@ -79,6 +79,22 @@ public class MainActivity extends AppCompatActivity {
             else if (x <= 75) friendsImageView.setImageResource(R.drawable.friends3);
             else friendsImageView.setImageResource(R.drawable.friends4);
         }
+        /*
+        if (view == stressImageView) {
+            if (x == 0) stressImageView.setImageResource(R.drawable.stress0);
+            else if (x <= 25) stressImageView.setImageResource(R.drawable.stress1);
+            else if (x <= 50) stressImageView.setImageResource(R.drawable.stress2);
+            else if (x <= 75) stressImageView.setImageResource(R.drawable.stress3);
+            else stressImageView.setImageResource(R.drawable.stress4);
+        }
+
+        if (view == gradesImageView) {
+            if (x == 0) gradesImageView.setImageResource(R.drawable.grades0);
+            else if (x <= 25) gradesImageView.setImageResource(R.drawable.grades1);
+            else if (x <= 50) gradesImageView.setImageResource(R.drawable.grades2);
+            else if (x <= 75) gradesImageView.setImageResource(R.drawable.grades3);
+            else gradesImageView.setImageResource(R.drawable.grades4);
+        }*/
     }
 
     private void printStats() {
@@ -89,7 +105,9 @@ public class MainActivity extends AppCompatActivity {
         tmp += " Friends: " + friends;
         statsTextView.setText(tmp);
         stressImageView.setImageResource(R.drawable.energy0);
+        imagePicker(stress, stressImageView);
         imagePicker(energy, energyImageView);
+        imagePicker(grades, gradesImageView);
         imagePicker(friends, friendsImageView);
 
     }
@@ -173,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void initialize() {
         promptNum = 0;
-        ArrayList<Prompt> prompts = new ArrayList<>();
+        prompts = new ArrayList<>();
         stress = 50;
         energy = 50;
         friends = 50;
