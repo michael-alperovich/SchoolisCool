@@ -71,17 +71,25 @@ public class MainActivity extends AppCompatActivity {
             else energyImageView.setImageResource(R.drawable.energy4);
         }
 
+        if (view == friendsImageView) {
+            if (x == 0) friendsImageView.setImageResource(R.drawable.friends0);
+            else if (x <= 25) friendsImageView.setImageResource(R.drawable.friends1);
+            else if (x <= 50) friendsImageView.setImageResource(R.drawable.friends2);
+            else if (x <= 75) friendsImageView.setImageResource(R.drawable.friends3);
+            else friendsImageView.setImageResource(R.drawable.friends4);
+        }
     }
 
     private void printStats() {
         String tmp = "";
         tmp += "Stress: " + stress;
         tmp += " Energy: " + energy;
-        tmp += " Friends: " + friends;
         tmp += " Grades: " + grades;
+        tmp += " Friends: " + friends;
         statsTextView.setText(tmp);
         stressImageView.setImageResource(R.drawable.energy0);
         imagePicker(energy, energyImageView);
+        imagePicker(friends, friendsImageView);
 
     }
 

@@ -51,7 +51,7 @@
                 android:layout_width="3dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/energy2" />
+                app:srcCompat="@drawable/friends2" />
 
         </LinearLayout>
 
