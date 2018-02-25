@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
   	  prompts.add(new Prompt("There's a lecture in a university in your area that is open to the public. Do you go?", "YES", "NO", 0, 0, -5, 0, -5, 5, 15, -5));
   	  prompts.add(new Prompt("There's a scholarship available for college. Do you try to get it?", "YES", "NO", 15, -5, -15, 5, -5, 5, -5, 5));
 	  prompts.add(new Prompt("Your bus is late. Yeah nothing you can do about it...", "OK", "OK", 10, 10, 0, 0, 0, 0, -5, -5));
-	  prompts.add(new Prompt("A random dog ran up to you and ate your homework. Your teacher doesn't believe you", "OK", "OK", 10, 10, 0, 0, 0, 0, -5, -5)));  	  
+	  prompts.add(new Prompt("A random dog ran up to you and ate your homework. Your teacher doesn't believe you", "OK", "OK", 10, 10, 0, 0, 0, 0, -5, -5));  	  
   	  prompts.add(new Prompt("There's a job opening in your area and you fit the criteria that would be needed to fill it. Do you apply for the job?", "YES", "NO", 15, -5, -10, 10, -10, 10, 15, -5));
   	  prompts.add(new Prompt("Do you sign up for an educational summer program?","YES", "SOUNDS LAME", 5, -5, -5, -5, -5, 15, 15, -5));
   	  prompts.add(new Prompt("Do you join the school's Science Team?", "YES", "NO", 15, -5, -5, 0, -5, 0, 5, 0));
