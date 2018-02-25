@@ -4,9 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-import blah.Prompt;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -15,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     TextView promptTextView;
     TextView statsTextView;
     TextView timeTextView;
+    TextView scoreTextView;
     Button leftButton;
     Button rightButton;
     private int promptNum = 0;
@@ -29,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean initialised = false;
     private int day = 0;
     private Random rgen = new Random();
+    private int score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         promptTextView = findViewById(R.id.promptTextView);
         statsTextView = findViewById(R.id.statsTextView);
         timeTextView = findViewById(R.id.timeTextView);
+        scoreTextView = findViewById(R.id.scoreTextView);
         leftButton = findViewById(R.id.leftButton);
         rightButton = findViewById(R.id.rightButton);
 
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void timeIncrease() {
-        minute += 30;
+        minute += 60;
         if (minute >= 60) {
             hour += minute / 60;
             minute -= 60;
@@ -81,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
             day = (day + 1) % 7;
         }
         timeTextView.setText("Time: " + hour + ": " + (minute / 10) + (minute % 10) + "; Day: " + getDayString(day));
+        scoreTextView.setText("Score: " + score);
     }
 
     private void initializePrompts() {
@@ -97,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
 	  prompts.add(new Prompt("Your bus is late. Yeah nothing you can do about it...", "OK", "OK", 10, 10, 0, 0, 0, 0, -5, -5));
 	  prompts.add(new Prompt("A random dog ran up to you and ate your homework. Your teacher doesn't believe you", "OK", "OK", 10, 10, 0, 0, 0, 0, -5, -5)));  	  
   	  prompts.add(new Prompt("There's a job opening in your area and you fit the criteria that would be needed to fill it. Do you apply for the job?", "YES", "NO", 15, -5, -10, 10, -10, 10, 15, -5));
-  	  prompts.add(new Prompt("Do you sign up for an educational summer program or hang out with friends?","YES", "SOUNDS LAME", 5, -5, -5, -5, -5, 15, 15, -5));
+  	  prompts.add(new Prompt("Do you sign up for an educational summer program?","YES", "SOUNDS LAME", 5, -5, -5, -5, -5, 15, 15, -5));
   	  prompts.add(new Prompt("Do you join the school's Science Team?", "YES", "NO", 15, -5, -5, 0, -5, 0, 5, 0));
   	  prompts.add(new Prompt("Do you join the school's Debate Team?", "YES", "NO", 15, -5, -5, 0, -5, 0, 5, 0));
   	  prompts.add(new Prompt("Your nerdy friend invites you to go to MAHacks", "HELL YEAH", "EW NERDS", 5, -10, -15, 5, 15, -15, 20, 0));
@@ -146,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
         minute = 0;
         initialised = false;
         day = 0;
+        score = 0;
         initializePrompts();
         printStats();
         main();
@@ -165,12 +168,13 @@ public class MainActivity extends AppCompatActivity {
             //System.out.println("time passes");
             printStats();
             timeIncrease();
+            score++;
             main();
         }
         else {
             printStats();
             if(grades <= 0){
-            	promptTextView.setText("You're grades are suffering so heavily, you're parents have decided to homeschool you...");
+            	promptTextView.setText("You're grades are suffering so heavily, you're parents have decided to homeschool you...\nYour score is: ");
             }
             else if(friends <= 0){
             	promptTextView.setText("Being a good friend is important. You didn't do that. You have 0 friends, even on facebook...");
