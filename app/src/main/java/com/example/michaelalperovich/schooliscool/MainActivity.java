@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
     public void initialize() {
         promptNum = 0;
         prompts = new ArrayList<>();
-        stress = 50;
+        stress = 30;
         energy = 50;
         friends = 50;
         grades = 50;
