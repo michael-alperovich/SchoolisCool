@@ -20,6 +20,40 @@
             android:text="Stress: 50, Energy 50, Grades: 50, Friends: 50"
             android:textAppearance="@android:style/TextAppearance.Medium" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/stressImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@android:drawable/btn_dialog" />
+
+            <ImageView
+                android:id="@+id/energyImageView"
+                android:layout_width="15dp"
+                android:layout_height="75dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/energy2" />
+
+            <ImageView
+                android:id="@+id/gradesImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@android:drawable/btn_star" />
+
+            <ImageView
+                android:id="@+id/friendsImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@android:drawable/btn_star" />
+        </LinearLayout>
+
         <TextView
             android:id="@+id/promptTextView"
             android:layout_width="match_parent"

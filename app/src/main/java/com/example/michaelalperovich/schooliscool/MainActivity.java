@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -16,6 +17,10 @@ public class MainActivity extends AppCompatActivity {
     TextView scoreTextView;
     Button leftButton;
     Button rightButton;
+    ImageView stressImageView;
+    ImageView energyImageView;
+    ImageView gradesImageView;
+    ImageView friendsImageView;
     private int promptNum = 0;
     private ArrayList<Prompt> prompts = new ArrayList<>();
     private int stress = 50;
@@ -40,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
         scoreTextView = findViewById(R.id.scoreTextView);
         leftButton = findViewById(R.id.leftButton);
         rightButton = findViewById(R.id.rightButton);
+        stressImageView = findViewById(R.id.stressImageView);
+        energyImageView = findViewById(R.id.energyImageView);
+        gradesImageView = findViewById(R.id.gradesImageView);
+        friendsImageView = findViewById(R.id.friendsImageView);
 
         initialize();
 
@@ -54,6 +63,17 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private int imagePicker(int x, ImageView view) {
+        if (view == energyImageView) {
+            if (x == 0) return 0;
+            if (x < 25) return 1;
+            if (x < 50) return 2;
+            if (x < 75) return 3;
+            return 4;
+        }
+
+    }
+
     private void printStats() {
         String tmp = "";
         tmp += "Stress: " + stress;
@@ -61,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
         tmp += " Friends: " + friends;
         tmp += " Grades: " + grades;
         statsTextView.setText(tmp);
+        stressImageView.setImageResource(R.drawable.energy0);
+
     }
 
     private void displayPrompt() {
