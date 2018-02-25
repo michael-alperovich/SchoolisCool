@@ -196,16 +196,16 @@ public class MainActivity extends AppCompatActivity {
         else {
             printStats();
             if(grades <= 0){
-            	promptTextView.setText("You're grades are suffering so heavily, you're parents have decided to homeschool you...\nYour score is: ");
+            	promptTextView.setText("You're grades are suffering so heavily, you're parents have decided to homeschool you...");
             }
             else if(friends <= 0){
-            	promptTextView.setText("Being a good friend is important. You didn't do that. You have 0 friends, even on facebook...");
+            	promptTextView.setText("Being a good friend is important. You didn't do that. You have 0 friends, even on facebook... You lost :(");
             }
             else if(energy <=  0){
-            	promptTextView.setText("You find yourself to tired, to wake up, or move, or go out, or breathe...");
+            	promptTextView.setText("You find yourself too tired, to wake up, or move, or go out, or breathe... You lost :(");
             }
             else if(stress >= 100){
-            	promptTextView.setText("Wow this is a lot to handle, you are so stressed out you cannot bring yourself to go to school, do your homework, or see your friends...");
+            	promptTextView.setText("Wow this is a lot to handle, you are so stressed out you cannot bring yourself to go to school, do your homework, or see your friends... You lost :(");
             }
         }
     }
