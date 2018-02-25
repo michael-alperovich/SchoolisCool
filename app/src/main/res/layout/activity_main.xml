@@ -27,35 +27,37 @@
 
             <ImageView
                 android:id="@+id/stressImageView"
-                android:layout_width="wrap_content"
+                android:layout_width="12dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@android:drawable/btn_dialog" />
+                app:srcCompat="@drawable/stress0" />
 
             <ImageView
                 android:id="@+id/energyImageView"
-                android:layout_width="15dp"
+                android:layout_width="12dp"
                 android:layout_height="75dp"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/energy2" />
 
             <ImageView
                 android:id="@+id/gradesImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="3dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@android:drawable/btn_star" />
+                app:srcCompat="@drawable/energy2" />
 
             <ImageView
                 android:id="@+id/friendsImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="3dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@android:drawable/btn_star" />
+                app:srcCompat="@drawable/friends2" />
+
         </LinearLayout>
 
         <TextView
             android:id="@+id/promptTextView"
+            android:background="#33DAFF"
             android:layout_width="match_parent"
             android:layout_height="192dp"
             android:text="Sample Text"

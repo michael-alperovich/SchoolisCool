@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView friendsImageView;
     private int promptNum = 0;
     private ArrayList<Prompt> prompts = new ArrayList<>();
-    private int stress = 50;
+    private int stress = 30;
     private int energy = 50;
     private int friends = 50;
     private int grades = 50;
@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
     private int day = 0;
     private Random rgen = new Random();
     private int score;
-
+    private Prompt lastPrompt;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         energyImageView = findViewById(R.id.energyImageView);
         gradesImageView = findViewById(R.id.gradesImageView);
         friendsImageView = findViewById(R.id.friendsImageView);
-
         initialize();
 
     }
@@ -63,39 +63,69 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private int imagePicker(int x, ImageView view) {
+    private void imagePicker(int x, ImageView view) {
         if (view == energyImageView) {
-            if (x == 0) return 0;
-            if (x < 25) return 1;
-            if (x < 50) return 2;
-            if (x < 75) return 3;
-            return 4;
+            if (x < 13) energyImageView.setImageResource(R.drawable.energy0);
+            else if (x < 38) energyImageView.setImageResource(R.drawable.energy1);
+            else if (x < 63) energyImageView.setImageResource(R.drawable.energy2);
+            else if (x < 88) energyImageView.setImageResource(R.drawable.energy3);
+            else energyImageView.setImageResource(R.drawable.energy4);
         }
 
+        if (view == friendsImageView) {
+            if (x < 13) friendsImageView.setImageResource(R.drawable.friends0);
+            else if (x < 38) friendsImageView.setImageResource(R.drawable.friends1);
+            else if (x < 63) friendsImageView.setImageResource(R.drawable.friends2);
+            else if (x < 88) friendsImageView.setImageResource(R.drawable.friends3);
+            else friendsImageView.setImageResource(R.drawable.friends4);
+        }
+
+        if (view == stressImageView) {
+            if (x < 13) stressImageView.setImageResource(R.drawable.stress0);
+            else if (x < 38) stressImageView.setImageResource(R.drawable.stress1);
+            else if (x < 63) stressImageView.setImageResource(R.drawable.stress2);
+            else if (x < 88) stressImageView.setImageResource(R.drawable.stress3);
+            else stressImageView.setImageResource(R.drawable.stress4);
+        }
+        /*
+        if (view == gradesImageView) {
+            if (x < 13) gradesImageView.setImageResource(R.drawable.grades0);
+            else if (x < 38) gradesImageView.setImageResource(R.drawable.grades1);
+            else if (x < 63) gradesImageView.setImageResource(R.drawable.grades2);
+            else if (x < 88) gradesImageView.setImageResource(R.drawable.grades3);
+            else gradesImageView.setImageResource(R.drawable.grades4);
+        }*/
     }
 
     private void printStats() {
         String tmp = "";
         tmp += "Stress: " + stress;
         tmp += " Energy: " + energy;
-        tmp += " Friends: " + friends;
         tmp += " Grades: " + grades;
+        tmp += " Friends: " + friends;
         statsTextView.setText(tmp);
         stressImageView.setImageResource(R.drawable.energy0);
+        imagePicker(stress, stressImageView);
+        imagePicker(energy, energyImageView);
+        imagePicker(grades, gradesImageView);
+        imagePicker(friends, friendsImageView);
 
     }
 
     private void displayPrompt() {
+    	
         promptNum = rgen.nextInt(prompts.size());
         Prompt currentPrompt = prompts.get(promptNum);
 
         int[] possibleDays = currentPrompt.getPossibleDays();
         int[] possibleTimes = currentPrompt.getPossibleTimes();
 
-        if(!(possibleDays[0] <= day && possibleDays[1] >= day && possibleTimes[0] <= hour && possibleTimes[1] >= hour)){
+        if(!(currentPrompt != lastPrompt && possibleDays[0] <= day && possibleDays[1] >= day && possibleTimes[0] <= hour && possibleTimes[1] >= hour)){
             displayPrompt();
             return;
         }
+        lastPrompt = currentPrompt;
+        
         promptTextView.setText(prompts.get(promptNum).toString());
         leftButton.setText(prompts.get(promptNum).getOption(0));
         rightButton.setText(prompts.get(promptNum).getOption(1));
@@ -160,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void initialize() {
         promptNum = 0;
-        ArrayList<Prompt> prompts = new ArrayList<>();
+        prompts = new ArrayList<>();
         stress = 50;
         energy = 50;
         friends = 50;
@@ -171,6 +201,7 @@ public class MainActivity extends AppCompatActivity {
         day = 0;
         score = 0;
         initializePrompts();
+        lastPrompt = prompts.get(0);
         printStats();
         main();
     }
@@ -195,16 +226,16 @@ public class MainActivity extends AppCompatActivity {
         else {
             printStats();
             if(grades <= 0){
-            	promptTextView.setText("You're grades are suffering so heavily, you're parents have decided to homeschool you...\nYour score is: ");
+            	promptTextView.setText("You're grades are suffering so heavily, you're parents have decided to homeschool you... you lost. \nMake sure to study and work hard, it will pay off!");
             }
             else if(friends <= 0){
-            	promptTextView.setText("Being a good friend is important. You didn't do that. You have 0 friends, even on facebook...");
+            	promptTextView.setText("Being a good friend is important. You didn't do that. You have 0 friends, even on facebook... You lost :(");
             }
             else if(energy <=  0){
-            	promptTextView.setText("You find yourself to tired, to wake up, or move, or go out, or breathe...");
+            	promptTextView.setText("You find yourself too tired, to wake up, or move, or go out, or breathe... You lost :(");
             }
             else if(stress >= 100){
-            	promptTextView.setText("Wow this is a lot to handle, you are so stressed out you cannot bring yourself to go to school, do your homework, or see your friends...");
+            	promptTextView.setText("Wow this is a lot to handle, you are so stressed out you cannot bring yourself to go to school, do your homework, or see your friends... You lost :(");
             }
         }
     }
