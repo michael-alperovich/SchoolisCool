@@ -87,14 +87,14 @@ public class MainActivity extends AppCompatActivity {
             else if (x < 88) stressImageView.setImageResource(R.drawable.stress3);
             else stressImageView.setImageResource(R.drawable.stress4);
         }
-        /*
+
         if (view == gradesImageView) {
-            if (x < 13) gradesImageView.setImageResource(R.drawable.grades0);
-            else if (x < 38) gradesImageView.setImageResource(R.drawable.grades1);
-            else if (x < 63) gradesImageView.setImageResource(R.drawable.grades2);
-            else if (x < 88) gradesImageView.setImageResource(R.drawable.grades3);
-            else gradesImageView.setImageResource(R.drawable.grades4);
-        }*/
+            if (x < 13) gradesImageView.setImageResource(R.drawable.grade0);
+            else if (x < 38) gradesImageView.setImageResource(R.drawable.grade1);
+            else if (x < 63) gradesImageView.setImageResource(R.drawable.grade2);
+            else if (x < 88) gradesImageView.setImageResource(R.drawable.grade3);
+            else gradesImageView.setImageResource(R.drawable.grade4);
+        }
     }
 
     private void printStats() {
