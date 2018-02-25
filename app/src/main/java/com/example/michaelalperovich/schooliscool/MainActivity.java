@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView friendsImageView;
     private int promptNum = 0;
     private ArrayList<Prompt> prompts = new ArrayList<>();
-    private int stress = 50;
+    private int stress = 30;
     private int energy = 50;
     private int friends = 50;
     private int grades = 50;
@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
     private int day = 0;
     private Random rgen = new Random();
     private int score;
-
+    private Prompt lastPrompt = prompts.get(0);
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,10 +93,12 @@ public class MainActivity extends AppCompatActivity {
         int[] possibleDays = currentPrompt.getPossibleDays();
         int[] possibleTimes = currentPrompt.getPossibleTimes();
 
-        if(!(possibleDays[0] <= day && possibleDays[1] >= day && possibleTimes[0] <= hour && possibleTimes[1] >= hour)){
+        if(!(currentPrompt != lastPrompt && possibleDays[0] <= day && possibleDays[1] >= day && possibleTimes[0] <= hour && possibleTimes[1] >= hour)){
             displayPrompt();
             return;
         }
+        lastPrompt = currentPrompt;
+        
         promptTextView.setText(prompts.get(promptNum).toString());
         leftButton.setText(prompts.get(promptNum).getOption(0));
         rightButton.setText(prompts.get(promptNum).getOption(1));
