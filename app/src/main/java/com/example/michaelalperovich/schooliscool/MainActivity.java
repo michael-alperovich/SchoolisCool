@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
         energyImageView = findViewById(R.id.energyImageView);
         gradesImageView = findViewById(R.id.gradesImageView);
         friendsImageView = findViewById(R.id.friendsImageView);
-
         initialize();
 
     }
@@ -63,13 +62,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private int imagePicker(int x, ImageView view) {
+    private void imagePicker(int x, ImageView view) {
         if (view == energyImageView) {
-            if (x == 0) return 0;
-            if (x < 25) return 1;
-            if (x < 50) return 2;
-            if (x < 75) return 3;
-            return 4;
+            if (x == 0) energyImageView.setImageResource(R.drawable.energy0);
+            else if (x <= 25) energyImageView.setImageResource(R.drawable.energy1);
+            else if (x <= 50) energyImageView.setImageResource(R.drawable.energy2);
+            else if (x <= 75) energyImageView.setImageResource(R.drawable.energy3);
+            else energyImageView.setImageResource(R.drawable.energy4);
         }
 
     }
@@ -82,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         tmp += " Grades: " + grades;
         statsTextView.setText(tmp);
         stressImageView.setImageResource(R.drawable.energy0);
+        imagePicker(energy, energyImageView);
 
     }
 
